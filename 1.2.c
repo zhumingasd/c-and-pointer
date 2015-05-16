@@ -4,7 +4,7 @@ int main()
     int i = 0;
 	char ch;
 	int ishead = 1;
-	while(scanf("%c", &ch) == 1)
+	while(scanf("%c", &ch) != EOF)
     {
 	   if(ch == '\n'){ 
 		   printf("%c", ch);
