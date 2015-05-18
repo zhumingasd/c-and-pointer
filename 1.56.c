@@ -21,8 +21,8 @@ int main(void)
     n_columns = read_column_numbers(columns, MAX_COLS);
 
 	while(gets(input) != NULL){
-	    printf("Original input : %s\n", ouput);
-		rearange(output, input, n_columns, columns);
+	    printf("Original input : %s\n", output);
+		rearrange(output, input, n_columns, columns);
 		printf("Rearranged line: %s\n", output);
 	}
 	return EXIT_SUCCESS;
@@ -35,6 +35,7 @@ int read_column_numbers(int columns[], int max)
 
 	while(num < max && scanf("%d", &columns[num]) == 1 && columns[num] >=0)
 	{
+		printf("num is %d\n", num);
 		num += 1;
 		if(num %2 != 0){
 		    puts("Last column number is not paired");
@@ -60,7 +61,9 @@ void rearrange(char *output, char const *input, int n_columns, int const columns
 	output_col = 0;
 
 	for(col = 0; col < n_columns; col+=2){
-	    if(columns[col] >= len || output_col == MAX_INPUT - 1)
+		int nchars = columns[col+1] - columns[col]+1;
+	   
+		if(columns[col] >= len || output_col == MAX_INPUT - 1)
 			break;
 
 	if(output_col + nchars > MAX_INPUT -1)
